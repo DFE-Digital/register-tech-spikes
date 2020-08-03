@@ -1,0 +1,5 @@
+<form action="/update" method="post">
+  <input id="person_name" name="person_name" type="text" value="<%= @person["Name"] %>"></input>
+  <input id="person_id" name="person_id" type="hidden" value="<%= @person["ID"] %>"></input>
+  <input type="submit" value="Update"></input>
+</form>
