@@ -1,5 +1,5 @@
 module DynamicsService
-  SERVICE_URL = "https://services.odata.org/V4/(S(omnrwvp0k30iwaruh1pknurf))/OData/OData.svc"
+  SERVICE_URL = "https://services.odata.org/V3/(S(omnrwvp0k30iwaruh1pknurf))/OData/OData.svc"
 
   class List
     def self.call
@@ -7,16 +7,14 @@ module DynamicsService
     end
 
     def call
-      # have to limit to the first two as Frodata is falling over
-      # with the sub classes e.g #ODataDemo.Customer that are returned
-      # in the response
-      client["Persons"].first(2)
+      client.Persons
+      client.execute
     end
 
     private
 
     def client
-      client ||= FrOData::Service.new(DynamicsService::SERVICE_URL, name: "ODataDemo")
+      client ||= OData::Service.new(SERVICE_URL)
     end
   end
 
@@ -32,13 +30,14 @@ module DynamicsService
     end
 
     def call
-      client["Persons"][person_id]
+      client.Persons(person_id)
+      client.execute
     end
 
     private
 
     def client
-      client ||= FrOData::Service.new(DynamicsService::SERVICE_URL, name: "ODataDemo")
+      client ||= OData::Service.new(SERVICE_URL)
     end
   end
 
@@ -55,17 +54,18 @@ module DynamicsService
     end
 
     def call
-      person = client["Persons"][person_id]
-      person["Name"] = person_name
+      client.Persons(person_id)
+      person = client.execute
+      person.Name = person_name
 
-      client["Persons"] << person
+      client.update_object(person)
       person
     end
 
     private
 
     def client
-      client ||= FrOData::Service.new(DynamicsService::SERVICE_URL, name: "ODataDemo")
+      client ||= OData::Service.new(SERVICE_URL)
     end
   end
 
@@ -81,15 +81,16 @@ module DynamicsService
     end
 
     def call
-      person = client["Persons"].new_entity("Name" => person_name)
-      client["Persons"] << person
-      person
+      person = Person.new
+      person.Name = person_name
+      client.AddToPersons(person)
+      client.save_changes
     end
 
     private
 
     def client
-      client ||= FrOData::Service.new(DynamicsService::SERVICE_URL, name: "ODataDemo")
+      client ||= OData::Service.new(SERVICE_URL)
     end
   end
 end
