@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="true"?>
+<service xmlns="http://www.w3.org/2007/app" xmlns:app="http://www.w3.org/2007/app"
+  xmlns:atom="http://www.w3.org/2005/Atom" xml:base="http://localhost:7048/DynamicsNAV/OData/">
+  <workspace>
+    <atom:title>Default</atom:title>
+    <collection href="Customer">
+      <atom:title>Customer</atom:title>
+    </collection>
+    <collection href="Company">
+      <atom:title>Company</atom:title>
+    </collection>
+  </workspace>
+</service>
