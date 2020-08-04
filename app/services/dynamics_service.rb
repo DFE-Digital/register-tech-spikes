@@ -1,5 +1,5 @@
 module DynamicsService
-  SERVICE_URL = "https://services.odata.org/V3/(S(omnrwvp0k30iwaruh1pknurf))/OData/OData.svc"
+  SERVICE_URL = "https://services.odata.org/V4/(S(omnrwvp0k30iwaruh1pknurf))/OData/OData.svc"
 
   class List
     def self.call
