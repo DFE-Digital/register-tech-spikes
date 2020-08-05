@@ -1,9 +1,9 @@
 <table>
 <% @people.each do |person| %>
   <tr>
-    <td><%= person["ID"] %></td>
-    <td><%= person["Name"] %></td>
-    <td><a href="/edit/<%=person["ID"]%>">Edit</a></td>
+    <td><%= person.name %></td>
+    <td><%= person.id %></td>
+    <td><a href="/edit/<%=person.id%>">Edit</a></td>
   </tr>
 <% end %>
 </table>
