@@ -1,0 +1,20 @@
+<table>
+  <% @contacts.each do |contact| %>
+  <tr>
+    <td><%= contact.first_name %></td>
+    <td><%= contact.last_name %></td>
+    <td><%= contact.id %></td>
+    <td><a href="/edit/<%=contact.id%>">Edit</a></td>
+    <td>
+      <form action="/destroy" method="post">
+        <input type="hidden" name="contact_id" value="<%=contact.id%>"></input>
+        <input type="submit" value="Delete"></input>
+      </form>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<p>
+  <a href="/new">Add new</a>
+</p>
