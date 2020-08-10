@@ -1,0 +1,6 @@
+<form action="/update" method="post">
+  <input id="contact_first_name" name="contact_first_name" type="text" value="<%= @contact.first_name %>"></input>
+  <input id="contact_last_name" name="contact_last_name" type="text" value="<%= @contact.last_name %>"></input>
+  <input id="contact_id" name="contact_id" type="hidden" value="<%= @contact.id %>"></input>
+  <input type="submit" value="Update"></input>
+</form>
